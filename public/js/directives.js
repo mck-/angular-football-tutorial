@@ -1,1 +1,1 @@
-window.angular.module('ngff.directives', [])
+angular.module('ngff.directives', [])

@@ -1,9 +1,11 @@
 //Setting up route
-window.app.config(['$routeProvider', function($routeProvider) {
-	$routeProvider
-	.when('/', { templateUrl: 'views/index.html' })
-	.otherwise({redirectTo: '/'});
-}]);
+window.app.config(function($routeProvider, $locationProvider) {
+  // $locationProvider.html5Mode(true);
+  $routeProvider
+  .when('/', { templateUrl: 'views/index.html' })
+  .when('/nfl', { templateUrl: 'views/nfl.html' })
+  .otherwise({redirectTo: '/'});
+});
 
 //Removing tomcat unspported headers
 window.app.config(['$httpProvider', function($httpProvider, Configuration) {
