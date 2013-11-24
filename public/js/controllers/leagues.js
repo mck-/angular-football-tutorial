@@ -6,7 +6,7 @@ window.angular.module('ngff.controllers.leagues', [])
       this.create = function () {
         // Create new league with form data
         var league = new Leagues({
-          name: this.league.name
+          name: $scope.league.name
         });
 
         // Save and redirect to league page
@@ -15,8 +15,7 @@ window.angular.module('ngff.controllers.leagues', [])
         });
 
         // Reset league name
-        this.league.name = '';
-
+        $scope.league.name = '';
       }
 
       // Find leagues based on query

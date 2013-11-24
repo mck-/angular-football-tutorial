@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
     env = process.env.NODE_ENV || 'development',
-    config = require('../config/config')[env],
+    config = require('../../config/config')[env],
     Schema = mongoose.Schema;
 
 var LeagueSchema = new Schema({
@@ -15,7 +15,7 @@ var LeagueSchema = new Schema({
 
 LeagueSchema.statics = {
   load: function ( id, cb ) {
-    this.findOne( _id: id ).populate('commissioner').exec(cb);
+    this.findOne({ _id: id }).populate('commissioner').exec(cb);
   }
 }
 
