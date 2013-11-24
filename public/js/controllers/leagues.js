@@ -1,6 +1,6 @@
 window.angular.module('ngff.controllers.leagues', [])
   .controller('LeaguesController',
-    function ($scope, Global, Leagues) {
+    function ($scope, $location, Global, Leagues) {
       this.Global = Global;
 
       this.create = function () {
