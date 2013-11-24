@@ -1,0 +1,6 @@
+<div ng-controller="LeaguesController" ng-init="find()">
+  <h2>Leagues</h2>
+  <div ng-repeat="league in leagues">
+    <a href="leagues/{{ league._id }}">{{ league.name }}</a>
+  </div>
+</div>

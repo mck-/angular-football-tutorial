@@ -1,0 +1,7 @@
+<div ng-controller="LeaguesController as leagues">
+  <h2>Create a New League</h2>
+  <form ng-submit="leagues.create()">
+    <label>League name: <input type="text" name="name" ng-model="league.name"></label>
+    <input type="submit" value="Create League">
+  </form>
+</div>

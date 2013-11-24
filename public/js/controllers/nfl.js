@@ -1,5 +1,7 @@
 angular.module('ngff.controllers.nfl', [])
   .controller('NFLController', function($routeParams, Global, NFL, $window) {
+    var that = this;
+
     checkAuth = function() {
       if(Global.isSignedIn())
         return true;
@@ -12,10 +14,12 @@ angular.module('ngff.controllers.nfl', [])
         return NFL.teams;
     };
 
-    this.getTeam = function(teamID){
-      if(checkAuth())
-        return NFL.teams.filter(function(team){
-          return team.abbr === teamID;
+    this.getTeam = function(){
+      if(checkAuth()) {
+        var nflteam = NFL.teams.filter(function(team){
+          return team.abbr === $routeParams.team;
         });
+        that.team = nflteam[0];
+      }
     };
   });
