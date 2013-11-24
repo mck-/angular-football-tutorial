@@ -1,6 +1,21 @@
-<div ng-controller="LeaguesController" ng-init="find()">
+<div ng-controller="LeaguesController as LCtrl" ng-init="LCtrl.find()">
   <h2>Leagues</h2>
-  <div ng-repeat="league in leagues">
-    <a href="leagues/{{ league._id }}">{{ league.name }}</a>
-  </div>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <td>League Name</td>
+        <td>League Commissioner</td>
+        <td>Actions</td>
+      </tr>
+    </thead>
+    <tbody ng-repeat="league in leagues">
+      <tr>
+        <td><a href="#!/leagues/{{ league._id }}">{{ league.name }}</a></td>
+        <td>{{ league.commissioner.name }}</td>
+        <td>
+          <a href="#!/leagues/{{ league._id }}" class="btn btn-mini btn-primary">Edit</a>
+          <span class="btn btn-mini btn-danger" ng-click="LCtrl.destroy(league)">Delete</span>
+        </td>
+    </tbody>
+  </table>
 </div>

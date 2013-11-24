@@ -1,6 +1,6 @@
 window.angular.module('ngff.controllers.leagues', [])
   .controller('LeaguesController',
-    function ($scope, $location, Global, Leagues) {
+    function ($scope, $location, $routeParams, Global, Leagues) {
       this.Global = Global;
 
       this.create = function () {
@@ -21,7 +21,7 @@ window.angular.module('ngff.controllers.leagues', [])
       // Find leagues based on query
       this.find = function (query) {
         Leagues.query(query, function (leagues) {
-          this.leagues = leagues;
+          $scope.leagues = leagues;
         });
       }
 
@@ -31,7 +31,7 @@ window.angular.module('ngff.controllers.leagues', [])
           leagueId: $routeParams.leagueId
         },
         function (league) {
-          this.league = league;
+          $scope.league = league;
         });
       }
 
@@ -44,11 +44,11 @@ window.angular.module('ngff.controllers.leagues', [])
       }
 
       // Remove league from the backend then from the frontend
-      this.destory = function (league) {
+      this.destroy = function (league) {
         // Remove from backend
-        league.$destroy();
+        league.$delete();
 
-        var leagues = this.leagues;
+        var leagues = $scope.leagues;
 
         for ( var i in leagues ) {
           if ( leagues[i] === league ) {
